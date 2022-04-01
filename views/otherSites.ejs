@@ -10,14 +10,16 @@
 </head>
 
 <body>
-    <% if(nav) {%>
-        <h1>Hallo this is the
-            <%- nav.name %>
-        </h1>
-        <% } else { %>
-            <h1>Unkonw Webpage</h1>
-            <%}%>
-                <h3><a href="/"> Back to Home</a></h3>
+    <main>
+        <% if(nav) {%>
+            <h1>Hallo this is the
+                <%- nav.name %>
+            </h1>
+            <% } else { %>
+                <h1>Unkonw Webpage</h1>
+                <%}%>
+                    <h3><a href="/"> Back to Home</a></h3>
+    </main>
 </body>
 
 </html>

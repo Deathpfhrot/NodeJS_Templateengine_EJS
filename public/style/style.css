@@ -29,3 +29,17 @@ main {
     align-items: center;
     height: 9 0vh;
 }
+
+img {
+    width: 100%;
+    /* aspect-ratio: 2 / 1.25; */
+    object-fit: cover;
+    object-position: center;
+}
+
+section {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}

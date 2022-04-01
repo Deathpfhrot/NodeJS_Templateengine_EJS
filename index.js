@@ -1,40 +1,59 @@
-const PORT = 9001
+const PORT = 9002
 const express = require("express")
 const data = require('./nav.json')
-console.log(data);
+const { gallery } = require("./gallery")
+    // console.log(gallery);
+    // console.log(data);
 
 // npm init -y
 // npm install express ejs
 
 const app = express()
 
-//configuartion
+//configuration
 app.set('view engine', 'ejs');
 
 //middleware
 app.use((req, _, next) => {
-    console.log("neue request: ", req.method, req.url);
+    // console.log("neue request: ", req.method, req.url);
     next()
 })
 
 app.use(express.static("public"))
 
+//routes
+
 app.get("/", (req, res) => {
-    res.render("home", { navList: data })
+    res.render("home", { data })
+        // console.log({ navList: data });
 })
 
-app.get("/:name", (req, res) => {
-    const navname = req.params.name
-    const nav = data.find(n => n.name.toLowerCase() === navname)
-    console.log(nav);
-    res.render("otherSites", { nav })
+app.get("/gallery", (req, res) => {
+    res.render("gallery", { data, gallery })
+        // console.log({ navList: data, gallery });
+})
+app.get("/contact", (req, res) => {
+    res.render("contact", { data })
+        // console.log({ navList: data, gallery });
+})
+app.get("/team", (req, res) => {
+    res.render("team", { data })
+        // console.log({ navList: data, gallery });
+})
+app.get("/about", (req, res) => {
+    res.render("about", { data })
+        // console.log({ navList: data, gallery });
 })
 
-app.get(":url", (req, res) => {
-    const navurl = req.params.url
-    const url = data.find(u => u.url === navurl)
-    res.render("otherSites", { url })
-})
+// app.get("/:name", (req, res) => {
+//     const navname = req.params.name
+//     const nav = data.find(n => n.name.toLowerCase() === navname)
+//     console.log(nav);
+//     res.render("otherSites", { nav })
+// })
+
+
+
 
 
 app.use((_, res) => {

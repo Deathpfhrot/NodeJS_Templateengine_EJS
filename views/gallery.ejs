@@ -26,7 +26,11 @@
         </nav>
     </header>
     <main>
-        <h1>Home Page</h1>
+        <section>
+            <% gallery.forEach(image=>{%>
+                <img src="<%- image.download_url%>" alt="">
+                <% })%>
+        </section>
     </main>
 </body>
 
